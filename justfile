@@ -30,8 +30,8 @@ celery-ci:
 
 compile:
     # TODO: remove dependency on django-heroku
-    uv pip compile --generate-hashes -o requirements.txt requirements.in
-    uv pip compile --generate-hashes -o requirements-dev.txt requirements-dev.in
+    uv pip compile -o requirements.txt requirements.in
+    uv pip compile -o requirements-dev.txt requirements-dev.in
 
 sync:
     uv pip sync requirements.txt requirements-dev.txt
