@@ -12,6 +12,7 @@ from ibis.backends.bigquery import Backend
 from ibis.config import options
 from ibis.expr.operations import DatabaseTable
 from ibis.expr.operations.relations import Namespace
+
 from apps.base.core.bigquery import (
     bq_table_schema_is_string_only,
     sanitize_bq_column_name,

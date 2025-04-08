@@ -17,7 +17,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_DB=gyana
+      - POSTGRES_DB=kindtech
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=psql
     healthcheck:
@@ -30,7 +30,7 @@ services:
     volumes:
       - engine_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_DB=gyana
+      - POSTGRES_DB=kindtech
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=psql
     healthcheck:
@@ -38,7 +38,7 @@ services:
       interval: 2s
       retries: 10
   web:
-    image: gyana:dev
+    image: kindtech:dev
     command: /bin/bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
@@ -53,7 +53,7 @@ services:
       redis:
         condition: service_healthy
   js:
-    image: gyana:dev
+    image: kindtech:dev
     command: npm run build:watch
     volumes:
       - .:/code
@@ -61,8 +61,8 @@ services:
     env_file:
       - ./.env.docker
   celery:
-    image: gyana:dev
-    command: celery -A gyana worker -Q celery,priority -l INFO
+    image: kindtech:dev
+    command: celery -A kindtech worker -Q celery,priority -l INFO
     volumes:
       - .:/code
     env_file:

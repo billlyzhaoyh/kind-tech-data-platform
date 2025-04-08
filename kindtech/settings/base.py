@@ -155,7 +155,7 @@ LOGGING = {
     },
 }
 
-ROOT_URLCONF = "gyana.urls"
+ROOT_URLCONF = "kindtech.urls"
 
 TEMPLATES = [
     {
@@ -168,7 +168,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "apps.web.context_processors.user_meta",
                 "apps.web.context_processors.project_meta",
-                "gyana.context_processors.django_settings",
+                "kindtech.context_processors.django_settings",
             ],
             # equivalent of APP_DIRS=True, plus admin_tools template loader
             "loaders": [
@@ -179,7 +179,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "gyana.wsgi.application"
+WSGI_APPLICATION = "kindtech.wsgi.application"
 
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
@@ -189,7 +189,7 @@ FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "gyana",
+        "NAME": "kindtech",
         "USER": os.getenv("PG_USER", "postgres"),
         "PASSWORD": os.getenv("PG_PASSWORD", "***"),
         "HOST": os.getenv("PG_HOST", "localhost"),

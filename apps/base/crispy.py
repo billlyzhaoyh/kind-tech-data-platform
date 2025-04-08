@@ -1,7 +1,5 @@
 from crispy_forms.bootstrap import Tab as BaseTab
-from crispy_forms.layout import TEMPLATE_PACK
-from crispy_forms.layout import Layout as BaseLayout
-from crispy_forms.layout import TemplateNameMixin
+from crispy_forms.layout import TEMPLATE_PACK, TemplateNameMixin
 from django.template.loader import render_to_string
 
 

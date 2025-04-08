@@ -2,7 +2,6 @@ import uuid
 
 import analytics
 from celery.app import shared_task
-from django.conf import settings
 from django.utils import timezone
 
 from apps.base.analytics import EXPORT_CREATED

@@ -1,0 +1,23 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: debug-statements
+
+- repo: local
+  hooks:
+      - id: just-fmt
+        name: Format code before committing
+        entry: just format
+        language: system
+        pass_filenames: false
+        always_run: true
+        exclude: ^\.venv/
+
+- repo: https://github.com/Riverside-Healthcare/djlint
+  rev: v1.36.4
+  hooks:
+    - id: djlint

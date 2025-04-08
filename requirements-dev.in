@@ -17,3 +17,4 @@ pytest-factoryboy
 pytest-mock
 pytest-playwright
 pytest-rerunfailures
+pre-commit

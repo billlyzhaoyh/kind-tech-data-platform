@@ -1,6 +1,5 @@
 import pandas as pd
 import pytest
-from ibis.backends.bigquery import Backend
 
 from apps.base.tests.asserts import assertOK
 from apps.nodes.models import Node

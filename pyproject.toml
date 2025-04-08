@@ -1,3 +1,8 @@
+[project]
+name = "kind-tech-data-platform"
+version = "0.1.0"
+requires-python = ">=3.9"
+
 [tool.djlint]
 blank_line_after_tag = "load,extends"
 custom_blocks = "timezone,flag"
@@ -23,7 +28,7 @@ extend_skip = ['migrations', 'migrate', 'apps/cookiecutter-app']
 profile = "black"
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "gyana.settings.development"
+DJANGO_SETTINGS_MODULE = "kindtech.settings.development"
 
 [tool.coverage.run]
 branch = true

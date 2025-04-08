@@ -187,7 +187,9 @@ class GyanaColumn(Column):
                 "class": (
                     "bg-green-50"
                     if value > self.positive_threshold
-                    else "bg-red-50" if value < self.negative_threshold else None
+                    else "bg-red-50"
+                    if value < self.negative_threshold
+                    else None
                 ),
             }
         if isinstance(value, Number) and self.currency:
