@@ -8,7 +8,7 @@ Required:
 
 - just
 - direnv
-- pyenv (`pyenv install 3.9.14`)
+- uv (`uv python install 3.9.14`)
 - volta (`curl https://get.volta.sh | bash`)
 - watchexec
 - redis 6 (`brew services start redis`)
@@ -22,16 +22,17 @@ We have a recommended list of extensions for developing in VSCode.
 
 ## Setup
 
+Pin the project to use python 3.9.14 from uv
+`uv python pin 3.19.4`
+
+Install python dependencies with
+`uv pip install -r requirements.txt`
+`uv pip install -r requirements-dev.txt`
+
 Authorize direnv to configure your local environment:
 
 ```bash
 direnv allow .
-```
-
-Install pip-tools in local python environment:
-
-```bash
-pip install pip-tools
 ```
 
 Install all required python and node dependencies:
@@ -43,17 +44,8 @@ just update
 Create a local database and run migrations on it:
 
 ```bash
-createdb gyana
+createdb kindtech
 just migrate
-just seed
-```
-
-Make sure to authenticate using gcloud and generate the relevant env variables:
-
-```bash
-gcloud auth login
-gcloud config set project gyana-1511894275181
-just env # decrypt secrets stored in repository
 ```
 
 ## Develop

@@ -4,9 +4,9 @@ from celery import Celery, signature
 from celery.schedules import crontab
 
 # set the default Django settings module for the 'celery' program.
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gyana.settings.development")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kindtech.settings.development")
 
-app = Celery("gyana")
+app = Celery("kindtech")
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.

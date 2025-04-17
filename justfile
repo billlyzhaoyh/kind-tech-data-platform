@@ -8,16 +8,16 @@ default:
   @just dev
 
 dev:
-    python ./manage.py runserver
+    uv run ./manage.py runserver
 
 celery:
-    watchexec -w apps -e py -r "celery -A gyana worker -Q celery,priority -l INFO"
+    watchexec -w apps -e py -r "uv run celery -A kindtech worker -Q celery,priority -l INFO"
 
 beat:
-    watchexec -w apps -e py -r "celery -A gyana beat -l INFO"
+    watchexec -w apps -e py -r "uv run celery -A kindtech beat -l INFO"
 
 migrate app='' migration='':
-    ./manage.py migrate {{app}} {{migration}}
+    uv run ./manage.py migrate {{app}} {{migration}}
 
 shell:
     ./manage.py shell -i ipython
@@ -26,24 +26,30 @@ collectstatic:
     ./manage.py collectstatic --noinput
 
 celery-ci:
-    celery -A gyana worker -l info
+    uv run celery -A kindtech worker -l info
 
 compile:
     # TODO: remove dependency on django-heroku
-    pip-compile --unsafe-package psycopg2 --unsafe-package setuptools
-    pip-compile requirements-dev.in
+    uv pip compile -o requirements.txt requirements.in
+    uv pip compile -o requirements-dev.txt requirements-dev.in
 
 sync:
-    pip-sync requirements.txt requirements-dev.txt
+    uv pip sync requirements.txt requirements-dev.txt
 
 update:
     npm install
     sync
 
+req:
+    uv pip install -r requirements.txt
+
+req-dev:
+    uv pip install -r requirements-dev.txt
+
 format:
-    autoflake --in-place --recursive --remove-all-unused-imports --ignore-init-module-imports --exclude 'apps/*/migrations' gyana apps
-    black .
-    isort .
+    uv run autoflake --in-place --recursive --remove-all-unused-imports --ignore-init-module-imports --exclude 'apps/*/migrations' kindtech apps
+    uv run black .
+    uv run isort .
 
 alias bf := branchformat
 branchformat:
@@ -62,7 +68,7 @@ test TEST=".":
     python -m pytest --no-migrations --ignore=apps/base/tests/e2e --ignore=apps/cookiecutter-app --disable-pytest-warnings -k {{TEST}}
 
 test-ci:
-    python -m pytest --cov --cov-report xml --no-migrations --disable-pytest-warnings --ignore=apps/base/tests/e2e --ignore=apps/cookiecutter-app 
+    python -m pytest --cov --cov-report xml --no-migrations --disable-pytest-warnings --ignore=apps/base/tests/e2e --ignore=apps/cookiecutter-app
 
 test-e2e:
     python -m pytest --no-migrations --disable-pytest-warnings --tracing=retain-on-failure --reruns 2 apps/base/tests/e2e

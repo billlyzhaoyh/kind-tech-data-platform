@@ -6,7 +6,6 @@ from apps.base.tests.asserts import (
     assertFormRenders,
     assertLink,
     assertOK,
-    assertSelectorHasAttribute,
     assertSelectorLength,
 )
 from apps.base.tests.snapshot import get_instance_dict

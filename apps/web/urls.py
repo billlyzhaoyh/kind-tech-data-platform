@@ -6,9 +6,7 @@ from . import frames, views
 
 app_name = "web"
 
-sitmap_urlpatterns = [
-    path("", views.Home.as_view(), name="home")
-]
+sitmap_urlpatterns = [path("", views.Home.as_view(), name="home")]
 
 urlpatterns = sitmap_urlpatterns + [
     # manually added to sitemap

@@ -1,5 +1,5 @@
-from django.core.files.uploadedfile import SimpleUploadedFile
 import pytest
+from django.core.files.uploadedfile import SimpleUploadedFile
 from pytest_django.asserts import assertContains, assertRedirects
 
 from apps.base.tests.asserts import assertOK

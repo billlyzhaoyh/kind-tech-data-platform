@@ -18,4 +18,6 @@ def get_public_storage():
     elif settings.ENGINE_URL.startswith("postgresql://"):
         return FileSystemStorage()  # defaults to MEDIA_ROOT
 
-    raise ValueError(f"Gyana doesnt not support this engine URL {settings.ENGINE_URL}")
+    raise ValueError(
+        f"kind-tech-data-platform doesnt not support this engine URL {settings.ENGINE_URL}"
+    )

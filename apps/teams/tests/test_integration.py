@@ -1,5 +1,4 @@
 import pytest
-from google.cloud.bigquery import Client
 from pytest_django.asserts import assertRedirects
 
 from apps.base.tests.asserts import (

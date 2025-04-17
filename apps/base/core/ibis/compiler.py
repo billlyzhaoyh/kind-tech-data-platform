@@ -1,15 +1,7 @@
-import ibis.expr.datatypes as dt
 import ibis.expr.rules as rlz
 from ibis.backends.bigquery.compiler import BigQueryExprTranslator
-from ibis.expr.operations import (
-    Reduction,
-    Value,
-)
-from ibis.expr.types import (
-    Column,
-    StructValue,
-    TimestampValue,
-)
+from ibis.expr.operations import Reduction, Value
+from ibis.expr.types import Column
 
 # Do not place compile functions and classes in a function as local variables
 # this will mess with cacheops and lead to cant pickle local object error

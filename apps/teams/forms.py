@@ -93,6 +93,8 @@ class MembershipUpdateForm(ModelForm):
         # Prevent last admin turning to member
         if self.instance.role == roles.ROLE_ADMIN and not self.instance.can_delete:
             self.fields["role"].widget.attrs["disabled"] = True
-            self.fields["role"].help_text = (
+            self.fields[
+                "role"
+            ].help_text = (
                 "You cannot make yourself a member because there is no admin left"
             )

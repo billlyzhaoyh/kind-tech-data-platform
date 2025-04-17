@@ -1,5 +1,5 @@
 import pytest
-from django.template import Context, RequestContext, Template
+from django.template import Context, Template
 from playwright.sync_api import expect
 
 from apps.base.alpine import ibis_store
